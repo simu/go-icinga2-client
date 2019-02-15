@@ -11,6 +11,7 @@ type Service struct {
 	CheckCommand string `json:"check_command"`
 	Notes        string `json:"notes"`
 	NotesURL     string `json:"notes_url"`
+	ActionURL    string `json:"action_url"`
 	Vars         Vars   `json:"vars"`
 	Zone         string `json:"zone,omitempty"`
 }
