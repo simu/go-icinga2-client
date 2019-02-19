@@ -28,6 +28,8 @@ type Client interface {
 	ListServices() ([]Service, error)
 	DeleteService(string) error
 	UpdateService(Service) error
+
+  ProcessCheckResult(Service, Action) error
 }
 
 type WebClient struct {
@@ -44,6 +46,7 @@ type MockClient struct {
 	Hostgroups map[string]HostGroup
 	Hosts      map[string]Host
 	Services   map[string]Service
+	Actions    map[string][]Action
 	mutex      sync.Mutex
 }
 
@@ -82,6 +85,7 @@ func NewMockClient() (c *MockClient) {
 	c.Hostgroups = make(map[string]HostGroup)
 	c.Hosts = make(map[string]Host)
 	c.Services = make(map[string]Service)
+	c.Actions = make(map[string][]Action)
 	c.mutex = sync.Mutex{}
 	return
 }

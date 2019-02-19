@@ -42,3 +42,10 @@ func (s *WebClient) ProcessCheckResult(service Service, action Action) error {
 
 	return s.handleResults("process-check-result", path, resp, &results, &errmsg, err)
 }
+
+func (s *MockClient) ProcessCheckResult(service Service, action Action) error {
+	s.mutex.Lock()
+	s.Actions[service.FullName()] = append(s.Actions[service.FullName()], action)
+	s.mutex.Unlock()
+	return nil
+}
