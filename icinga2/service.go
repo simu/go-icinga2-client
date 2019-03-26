@@ -6,7 +6,8 @@ import (
 )
 
 type Service struct {
-	Name         string `json:"display_name"`
+	Name         string `json:"name,omitempty"`
+	DisplayName  string `json:"display_name"`
 	HostName     string `json:"host_name"`
 	CheckCommand string `json:"check_command"`
 	Notes        string `json:"notes"`
@@ -60,6 +61,8 @@ func (s *WebClient) GetService(name string) (Service, error) {
 
 func (s *WebClient) CreateService(service Service) error {
 	serviceCreate := ServiceCreate{Attrs: service}
+	// Strip "name" from create payload
+	serviceCreate.Attrs.Name = ""
 	err := s.CreateObject("/services/"+service.FullName(), serviceCreate)
 	return err
 }
@@ -88,6 +91,8 @@ func (s *WebClient) DeleteService(name string) (err error) {
 
 func (s *WebClient) UpdateService(service Service) error {
 	serviceUpdate := ServiceCreate{Attrs: service}
+	// Strip "name" from update payload
+	serviceUpdate.Attrs.Name = ""
 
 	err := s.UpdateObject("/services/"+service.FullName(), serviceUpdate)
 	return err

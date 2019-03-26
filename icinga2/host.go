@@ -6,7 +6,8 @@ import (
 )
 
 type Host struct {
-	Name         string   `json:"display_name"`
+	Name         string   `json:"name,omitempty"`
+	DisplayName  string   `json:"display_name"`
 	Address      string   `json:"address,omitempty"`
 	Address6     string   `json:"address6,omitempty"`
 	CheckCommand string   `json:"check_command,omitempty"`
@@ -58,6 +59,8 @@ func (s *WebClient) GetHost(name string) (Host, error) {
 
 func (s *WebClient) CreateHost(host Host) error {
 	hostCreate := HostCreate{Templates: []string{"generic-host"}, Attrs: host}
+	// Strip "name" field from payload
+	hostCreate.Attrs.Name = ""
 	err := s.CreateObject("/hosts/"+host.Name, hostCreate)
 	return err
 }
@@ -87,6 +90,8 @@ func (s *WebClient) DeleteHost(name string) (err error) {
 func (s *WebClient) UpdateHost(host Host) error {
 	host.Groups = []string{} // must be empty when updating the Host
 	hostUpdate := HostCreate{Attrs: host}
+	// Strip "name" field from payload
+	hostUpdate.Attrs.Name = ""
 	err := s.UpdateObject("/hosts/"+host.Name, hostUpdate)
 	return err
 }
