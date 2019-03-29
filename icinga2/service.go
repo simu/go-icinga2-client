@@ -6,15 +6,20 @@ import (
 )
 
 type Service struct {
-	Name         string `json:"name,omitempty"`
-	DisplayName  string `json:"display_name"`
-	HostName     string `json:"host_name"`
-	CheckCommand string `json:"check_command"`
-	Notes        string `json:"notes"`
-	NotesURL     string `json:"notes_url"`
-	ActionURL    string `json:"action_url"`
-	Vars         Vars   `json:"vars"`
-	Zone         string `json:"zone,omitempty"`
+	Name               string  `json:"name,omitempty"`
+	DisplayName        string  `json:"display_name"`
+	HostName           string  `json:"host_name"`
+	CheckCommand       string  `json:"check_command"`
+	EnableActiveChecks bool    `json:"enable_active_checks"`
+	Notes              string  `json:"notes"`
+	NotesURL           string  `json:"notes_url"`
+	ActionURL          string  `json:"action_url"`
+	Vars               Vars    `json:"vars"`
+	Zone               string  `json:"zone,omitempty"`
+	CheckInterval      float64 `json:"check_interval"`
+	RetryInterval      float64 `json:"retry_interval"`
+	State              float64 `json:"state,omitempty"`
+	LastStateChange    float64 `json:"last_state_change,omitempty"`
 }
 
 type ServiceResults struct {
