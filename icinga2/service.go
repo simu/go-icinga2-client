@@ -72,11 +72,11 @@ func (s *WebClient) CreateService(service Service) error {
 	return err
 }
 
-func (s *WebClient) ListServices() (services []Service, err error) {
+func (s *WebClient) ListServices(query string) (services []Service, err error) {
 	var serviceResults ServiceResults
 	services = []Service{}
 
-	_, err = s.napping.Get(s.URL+"/v1/objects/services/", nil, &serviceResults, nil)
+	_, err = s.napping.Get(s.URL+"/v1/objects/services?"+query, nil, &serviceResults, nil)
 	if err != nil {
 		return
 	}
@@ -118,10 +118,11 @@ func (s *MockClient) CreateService(service Service) error {
 	return nil
 }
 
-func (s *MockClient) ListServices() ([]Service, error) {
+func (s *MockClient) ListServices(query string) ([]Service, error) {
 	services := []Service{}
 
 	for _, x := range s.Services {
+		// TODO: implement list filtering for MockClient
 		services = append(services, x)
 	}
 

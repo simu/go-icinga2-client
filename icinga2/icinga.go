@@ -25,11 +25,11 @@ type Client interface {
 
 	GetService(string) (Service, error)
 	CreateService(Service) error
-	ListServices() ([]Service, error)
+	ListServices(string) ([]Service, error)
 	DeleteService(string) error
 	UpdateService(Service) error
 
-  ProcessCheckResult(Service, Action) error
+	ProcessCheckResult(Service, Action) error
 }
 
 type WebClient struct {
