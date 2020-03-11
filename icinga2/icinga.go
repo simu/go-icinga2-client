@@ -24,6 +24,8 @@ type Client interface {
 	DeleteHostGroup(string) error
 	UpdateHostGroup(HostGroup) error
 
+	ListDowntimes(string) ([]Downtime, error)
+
 	GetService(string) (Service, error)
 	CreateService(Service) error
 	ListServices(string) ([]Service, error)
