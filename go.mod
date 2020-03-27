@@ -1,4 +1,4 @@
-module github.com/Nexinto/go-icinga2-client
+module github.com/vshn/go-icinga2-client
 
 require (
 	github.com/jmcvetta/randutil v0.0.0-20150817122601-2bb1b664bcff // indirect
