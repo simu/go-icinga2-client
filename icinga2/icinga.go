@@ -36,14 +36,15 @@ type Client interface {
 }
 
 type WebClient struct {
-	napping     napping.Session
-	URL         string
-	Username    string
-	Password    string
-	Debug       bool
-	InsecureTLS bool
-	Zone        string
-	RootCAs     *x509.CertPool
+	napping           napping.Session
+	URL               string
+	Username          string
+	Password          string
+	Debug             bool
+	InsecureTLS       bool
+	DisableKeepAlives bool
+	Zone              string
+	RootCAs           *x509.CertPool
 }
 
 type MockClient struct {
@@ -77,6 +78,7 @@ func New(s WebClient) (*WebClient, error) {
 			InsecureSkipVerify: s.InsecureTLS,
 			RootCAs:            rootCAs,
 		},
+		DisableKeepAlives: s.DisableKeepAlives,
 	}
 	client := &http.Client{Transport: transport}
 
