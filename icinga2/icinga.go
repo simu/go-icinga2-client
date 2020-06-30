@@ -78,7 +78,7 @@ func New(s WebClient) (*WebClient, error) {
 			InsecureSkipVerify: s.InsecureTLS,
 			RootCAs:            rootCAs,
 		},
-                DisableKeepAlives: s.DisableKeepAlives,
+		DisableKeepAlives: s.DisableKeepAlives,
 	}
 	client := &http.Client{Transport: transport}
 
