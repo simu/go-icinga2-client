@@ -13,7 +13,7 @@ icinga, err := icinga2.New(icinga2.WebClient{
 		Password:    "secret",
 		Debug:       true,
 		InsecureTLS: false,
-                DisableKeepAlives: false})
+		DisableKeepAlives: false})
 ```
 
 ### List hostgroups
