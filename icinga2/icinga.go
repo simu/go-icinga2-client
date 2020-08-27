@@ -14,13 +14,13 @@ import (
 type Client interface {
 	GetHost(string) (Host, error)
 	CreateHost(Host) error
-	ListHosts() ([]Host, error)
+	ListHosts(string) ([]Host, error)
 	DeleteHost(string) error
 	UpdateHost(Host) error
 
 	GetHostGroup(string) (HostGroup, error)
 	CreateHostGroup(HostGroup) error
-	ListHostGroups() ([]HostGroup, error)
+	ListHostGroups(string) ([]HostGroup, error)
 	DeleteHostGroup(string) error
 	UpdateHostGroup(HostGroup) error
 

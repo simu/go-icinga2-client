@@ -43,11 +43,11 @@ func (s *WebClient) CreateHostGroup(hostGroup HostGroup) error {
 	return err
 }
 
-func (s *WebClient) ListHostGroups() (hostGroups []HostGroup, err error) {
+func (s *WebClient) ListHostGroups(query string) (hostGroups []HostGroup, err error) {
 	var hostGroupResults HostGroupResults
 	hostGroups = []HostGroup{}
 
-	_, err = s.napping.Get(s.URL+"/v1/objects/hostgroups/", nil, &hostGroupResults, nil)
+	_, err = s.napping.Get(s.URL+"/v1/objects/hostgroups?"+query, nil, &hostGroupResults, nil)
 	if err != nil {
 		return
 	}
