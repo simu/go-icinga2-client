@@ -65,11 +65,11 @@ func (s *WebClient) CreateHost(host Host) error {
 	return err
 }
 
-func (s *WebClient) ListHosts() (hosts []Host, err error) {
+func (s *WebClient) ListHosts(query string) (hosts []Host, err error) {
 	var hostResults HostResults
 	hosts = []Host{}
 
-	_, err = s.napping.Get(s.URL+"/v1/objects/hosts/", nil, &hostResults, nil)
+	_, err = s.napping.Get(s.URL+"/v1/objects/hosts?"+query, nil, &hostResults, nil)
 	if err != nil {
 		return
 	}
