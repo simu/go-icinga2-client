@@ -111,10 +111,11 @@ func (s *MockClient) CreateHost(host Host) error {
 	return nil
 }
 
-func (s *MockClient) ListHosts() ([]Host, error) {
+func (s *MockClient) ListHosts(query string) ([]Host, error) {
 	hosts := []Host{}
 
 	for _, x := range s.Hosts {
+		// TODO: implement list filtering for MockClient
 		hosts = append(hosts, x)
 	}
 

@@ -87,10 +87,11 @@ func (s *MockClient) CreateHostGroup(hostGroup HostGroup) error {
 	return nil
 }
 
-func (s *MockClient) ListHostGroups() ([]HostGroup, error) {
+func (s *MockClient) ListHostGroups(query string) ([]HostGroup, error) {
 	hostGroups := []HostGroup{}
 
 	for _, x := range s.Hostgroups {
+		// TODO: implement list filtering for MockClient
 		hostGroups = append(hostGroups, x)
 	}
 
