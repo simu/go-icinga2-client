@@ -19,6 +19,7 @@ type Service struct {
 	CheckInterval      float64 `json:"check_interval"`
 	RetryInterval      float64 `json:"retry_interval"`
 	MaxCheckAttempts   float64 `json:"max_check_attempts"`
+	CheckPeriod        string  `json:"check_period"`
 	State              float64 `json:"state,omitempty"`
 	LastStateChange    float64 `json:"last_state_change,omitempty"`
 }
