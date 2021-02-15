@@ -1,5 +1,7 @@
 # go-icinga2-client
 
+### :heavy_exclamation_mark: This fork has been moved to [vshn/go-icinga2-client](https://github.com/vshn/go-icinga2-client) :heavy_exclamation_mark:
+
 Icinga2 API client.
 
 ## Getting started
